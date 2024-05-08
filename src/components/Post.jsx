@@ -1,16 +1,18 @@
 // const names = ['Oscar', 'Marcelo'];
 
 import styles from './Post.module.css';
+import {Link} from "react-router-dom";
 
-const Post = ({author, body}) => {
-
-    // const chosenName = Math.random() > 0.5 ? names[0] : names[1];
+const Post = ({id, author, body}) => {
 
     return (
-        <li className={styles.post}>
-            <p className={styles.author}>{author}</p>
-            <p className={styles.text}>{body}</p>
-        </li>
+        <Link to={id}>
+            <li className={styles.post}>
+                <p className={styles.author}>{author}</p>
+                <p className={styles.text}>{body}</p>
+            </li>
+        </Link>
+
     )
 }
 
