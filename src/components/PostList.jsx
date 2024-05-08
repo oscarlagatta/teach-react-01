@@ -6,34 +6,6 @@ const PostList = () => {
 
     const posts = useLoaderData();
 
-    // fetch(`http://localhost:8080/posts`);
-
-    // const [posts, setPosts] = useState([]);
-    // const [isFetching, setIsFetching] = useState(false);
-
-    // useEffect(() => {
-    //     async function fetchPosts() {
-    //         setIsFetching(true);
-    //
-    //         setPosts(resData.posts);
-    //         setIsFetching(false);
-    //     }
-    //
-    //     fetchPosts();
-    // }, []);
-
-    function addPostHandler(postData) {
-
-        fetch(`http://localhost:8080/posts`, {
-            method: 'POST',
-            body: JSON.stringify(postData),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        // setPosts((existingPosts) => [postData, ...existingPosts]);
-    }
 
     return (
         <>
