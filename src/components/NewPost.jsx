@@ -22,7 +22,6 @@ function NewPost({onCancel, onAddPost}) {
             body: enteredBody,
             author: enteredAuthor
         };
-        console.log(postData);
 
         onAddPost(postData);
 

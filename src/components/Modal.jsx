@@ -1,8 +1,6 @@
 import styles from './Modal.module.css';
 
-const Modal = ({children, onClose}) => {
-
-    console.log(onClose)
+const Modal = ({children}) => {
     return (<>
             <div className={styles.backdrop}>
                 <dialog open className={styles.modal}>
