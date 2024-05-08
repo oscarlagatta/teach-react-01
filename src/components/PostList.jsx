@@ -2,10 +2,22 @@ import Post from "./Post";
 import styles from './PostList.module.css';
 import NewPost from "./NewPost.jsx";
 import Modal from "./Modal.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const PostList = ({isPosting, onStopPosting}) => {
+
+    // fetch(`http://localhost:8080/posts`);
+
     const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        async function fetchPosts() {
+            const response = await fetch(`http://localhost:8080/posts`);
+            const resData = await response.json();
+            setPosts(resData.posts);
+        }
+        fetchPosts();
+    }, []);
 
     function addPostHandler(postData) {
 
