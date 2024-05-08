@@ -1,10 +1,8 @@
 import Post from "./Post";
 import styles from './PostList.module.css';
-import NewPost from "./NewPost.jsx";
-import Modal from "./Modal.jsx";
 import {useEffect, useState} from "react";
 
-const PostList = ({isPosting, onStopPosting}) => {
+const PostList = () => {
 
     // fetch(`http://localhost:8080/posts`);
 
@@ -38,16 +36,16 @@ const PostList = ({isPosting, onStopPosting}) => {
 
     return (
         <>
-            {
-                isPosting && (
-                    <Modal onClose={onStopPosting}>
-                        <NewPost
-                            onCancel={onStopPosting}
-                            onAddPost={addPostHandler}
-                        />
-                    </Modal>
-                )
-            }
+            {/*{*/}
+            {/*    isPosting && (*/}
+            {/*        <Modal onClose={onStopPosting}>*/}
+            {/*            <NewPost*/}
+            {/*                onCancel={onStopPosting}*/}
+            {/*                onAddPost={addPostHandler}*/}
+            {/*            />*/}
+            {/*        </Modal>*/}
+            {/*    )*/}
+            {/*}*/}
             {!isFetching && posts.length > 0 && <ul className={styles.posts}>
                 {posts.map((post) => (
                         <Post key={post.body} author={post.author} body={post.body}/>
