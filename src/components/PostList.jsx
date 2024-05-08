@@ -9,13 +9,17 @@ const PostList = ({isPosting, onStopPosting}) => {
     // fetch(`http://localhost:8080/posts`);
 
     const [posts, setPosts] = useState([]);
+    const [isFetching, setIsFetching] = useState(false);
 
     useEffect(() => {
         async function fetchPosts() {
+            setIsFetching(true);
             const response = await fetch(`http://localhost:8080/posts`);
             const resData = await response.json();
             setPosts(resData.posts);
+            setIsFetching(false);
         }
+
         fetchPosts();
     }, []);
 
@@ -44,15 +48,19 @@ const PostList = ({isPosting, onStopPosting}) => {
                     </Modal>
                 )
             }
-            {posts.length > 0 && <ul className={styles.posts}>
+            {!isFetching && posts.length > 0 && <ul className={styles.posts}>
                 {posts.map((post) => (
                         <Post key={post.body} author={post.author} body={post.body}/>
                     )
                 )}
             </ul>}
-            {posts.length === 0 && <div style={{textAlign: 'center', color: 'white'}}>
+            {!isFetching && posts.length === 0 && <div style={{textAlign: 'center', color: 'white'}}>
                 <h2>There are no posts yet</h2>
                 <p>Start adding some...</p>
+            </div>}
+            {isFetching && <div style={{textAlign: 'center', color: 'white'}}>
+                <h2>Loading Posts</h2>
+                <p>Please wait...</p>
             </div>}
         </>
     )
